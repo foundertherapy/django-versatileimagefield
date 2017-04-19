@@ -5,6 +5,7 @@ import os
 import re
 
 from django.utils.six import iteritems
+from unidecode import unidecode
 
 from .datastructures import FilterLibrary
 from .registry import autodiscover, versatileimagefield_registry
@@ -185,8 +186,8 @@ class VersatileImageMixIn(object):
                     )
                     print(
                         "Deleted {file} (created from: {original})".format(
-                            file=os.path.join(root_folder, f),
-                            original=self.name
+                            file=os.path.join(root_folder, unidecode(f)),
+                            original=unidecode(self.name)
                         )
                     )
 
